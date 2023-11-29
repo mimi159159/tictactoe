@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+div.tic { text-align:center; padding-top:30px ;
+}
+body.tac{
+    background-color: rgb(235, 205, 255);
+}
+button.toe {
+    background-color: honeydew;
+}
+
+
+    </style>
+</head>
+<body class="tac">
+    <div class="tic"  id="div1" onclick="play();win()" >
+        <h1>
+            <p id="ms">its X turn</p>
+        </h1>
+        <div>
+            <button class="toe" id="a1" onclick="colorChange(this)">__</button>
+            <button class="toe" id="a2" onclick="colorChange(this)">__</button>
+            <button class="toe" id="a3" onclick="colorChange(this)">__</button>
+        </div>
+        <div>
+            <button class="toe" id="a4" onclick="colorChange(this)">__</button>
+            <button class="toe" id="a5" onclick="colorChange(this)">__</button>
+            <button class="toe" id="a6" onclick="colorChange(this)">__</button>
+        </div>
+        <div>
+            <button class="toe" id="a7" onclick="colorChange(this)">__</button>
+            <button class="toe" id="a8" onclick="colorChange(this)">__</button>
+            <button class="toe" id="a9" onclick="colorChange(this)">__</button>
+        </div>
+        <br>
+        <button class="toe" onclick="playAndClear()">play again</button>
+        <button class="toe" onclick="playAndClear()">clear board</button>
+    </div>
+
+    <script>
+        let singTurn = "X"
+        let counter =0
+      
+           
+        
+        function play() {
+                if (event.target.innerText == "__") {
+                    event.target.innerText = singTurn
+                    singTurn = singTurn == "X" ? "O" : "X"
+                    ms.innerText = `its ${singTurn} turn`
+                    counter++
+                    if (counter==9) {
+                        ms.innerText ="its a tie"
+            }
+        }
+                    }
+             function colorChange(button) { 
+            button.style.backgroundColor = 'lightcyan'
+            if (singTurn=="O") {
+                button.style.backgroundColor = 'rgb(127, 255, 223)'    
+            }}
+        
+        function isEqual(p1, p2, p3) {
+            return (p1 == p2) && (p2 == p3) && (p2 == "X" || p2== "O");
+        }
+        function win() {
+            if (isEqual(a7.innerText, a5.innerText, a3.innerText)) {
+                ms.innerText = `the winner is ${a5.innerText}!`
+            } else if (isEqual(a1.innerText, a5.innerText, a9.innerText)) {
+                ms.innerText = `the winner is ${a5.innerText}!`
+            } else if (isEqual(a1.innerText, a2.innerText, a3.innerText)) {
+                ms.innerText = `the winner is ${a2.innerText}!`
+            } else if (isEqual(a4.innerText, a5.innerText, a6.innerText)) {
+                ms.innerText = `the winner is ${a5.innerText}!`
+            } else if (isEqual(a7.innerText, a8.innerText, a9.innerText)) {
+                ms.innerText = `the winner is ${a8.innerText}!`
+            } else if (isEqual(a1.innerText, a4.innerText, a7.innerText)) {
+                ms.innerText = `the winner is ${a4.innerText}!`
+            } else if (isEqual(a2.innerText, a5.innerText, a8.innerText)) {
+                ms.innerText = `the winner is ${a5.innerText}!`
+            } else if (isEqual(a3.innerText, a6.innerText, a9.innerText)) {
+                ms.innerText = `the winner is ${a6.innerText}!`
+            }
+        }
+function playAndClear() {
+    a1.innerText ="__"
+    a2.innerText ="__"
+    a3.innerText="__"
+    a4.innerText="__"
+    a5.innerText="__"
+    a6.innerText="__"
+    a7.innerText="__"
+    a8.innerText="__"
+    a9.innerText="__"
+    a1.style.backgroundColor= 'honeydew';a2.style.backgroundColor= 'honeydew';a3.style.backgroundColor= 'honeydew';a4.style.backgroundColor= 'honeydew';a5.style.backgroundColor= 'honeydew';a6.style.backgroundColor= 'honeydew';a7.style.backgroundColor= 'honeydew';a8.style.backgroundColor= 'honeydew';a9.style.backgroundColor= 'honeydew';
+}
+
+    </script>
+</body>
+</html>

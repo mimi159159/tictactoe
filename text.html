@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+
+
+    </style>
+</head>
+
+<body>
+    <div onclick="play();win()">
+        <h1>
+            <p id="ms">its X turn</p>
+        </h1>
+        <div>
+            <button id="a1" onclick="">__</button>
+            <button id="a2" onclick="">__</button>
+            <button id="a3" onclick="">__</button>
+        </div>
+        <div>
+            <button id="a4" onclick="">4</button>
+            <button id="a5" onclick="">5</button>
+            <button id="a6" onclick="">6</button>
+        </div>
+        <div>
+            <button id="a7" onclick="">7</button>
+            <button id="a8" onclick="">8</button>
+            <button id="a9" onclick="">9</button>
+        </div>
+        <button>play again</button>
+        <button>clear board</button>
+    </div>
+
+    <script>
+        let singTurn = "X"
+        let counter =0
+        function play() {
+            for (let i = 1; i < 10; i++) {
+                if (event.target.innerText == i) {
+                    event.target.innerText = singTurn
+                    singTurn = singTurn == "X" ? "O" : "X"
+                    ms.innerText = `its ${singTurn} turn`
+                    counter++
+                    if (counter==9) {
+                        ms.innerText ="its a tie"
+                    }
+                }
+            }
+
+        }
+        function isEqual(p1, p2, p3) {
+            return p1 == p2 && p2 == p3;
+        }
+        function win() {
+            if (isEqual(a7.innerText, a5.innerText, a3.innerText)) {
+                ms.innerText = `the winner is ${a5.innerText}!`
+            } else if (isEqual(a1.innerText, a5.innerText, a9.innerText)) {
+                ms.innerText = `the winner is ${a5.innerText}!`
+            } else if (isEqual(a1.innerText, a2.innerText, a3.innerText)) {
+                ms.innerText = `the winner is ${a2.innerText}!`
+            } else if (isEqual(a4.innerText, a5.innerText, a6.innerText)) {
+                ms.innerText = `the winner is ${a5.innerText}!`
+            } else if (isEqual(a7.innerText, a8.innerText, a9.innerText)) {
+                ms.innerText = `the winner is ${a8.innerText}!`
+            } else if (isEqual(a1.innerText, a4.innerText, a7.innerText)) {
+                ms.innerText = `the winner is ${a4.innerText}!`
+            } else if (isEqual(a2.innerText, a5.innerText, a8.innerText)) {
+                ms.innerText = `the winner is ${a5.innerText}!`
+            } else if (isEqual(a3.innerText, a6.innerText, a9.innerText)) {
+                ms.innerText = `the winner is ${a6.innerText}!`
+            }
+        }
+function playAndClear() {
+    
+}
+
+    </script>
+</body>
+</html>

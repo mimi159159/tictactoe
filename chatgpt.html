@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button with Left and Bottom Border</title>
+    <style>
+        /* Optional: Add some styles for better appearance */
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<button id="myButton" onclick="addBorders()">Click me</button>
+
+<script>
+    function addBorders() {
+        // Get the button element
+        var button = document.getElementById('myButton');
+
+        // Modify the button's border properties
+        button.style.borderLeft = '2px solid red';
+        button.style.borderBottom = '2px solid red';
+    }
+</script>
+
+</body>
+</html>
